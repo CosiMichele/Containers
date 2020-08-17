@@ -4,6 +4,11 @@ Containers used in the PhytoOracle project.
 
 ## Functional (use Singularity!)
 
++ `flirfieldplot`
++ `po_flir2tif_s10`
++ `po_flir2tif_s11`
++ `po_meantemp_comb`
+
 #### flirfieldplot
 
 + Creates a stitched "ortho" for flir images.
@@ -25,13 +30,19 @@ Usage:
 Usage:
 `singularity run -B $(pwd):/mnt --pwd /mnt/ docker://cosimichele/po_flir2tif_s11 -m <metadata.json> <bin_dir>`
 
+#### po_meantemp_comb
 
++ Extracts mean temperature information from geotif images sing stats and CV2.
+
+Usage:
+`singularity run -B $(pwd):/mnt --pwd /mnt/ docker://cosimichele/po_temp_cv2stats -g <shp.geojson> -o <out_dir/> -d <scan_date> <tif_dir>`
+  
 ## Redundant/developmental
 
-+ po_meantemp
-+ peaks_temp
-+ po_mt_img
-+ zero2nan
++ `po_meantemp`
++ `peaks_temp`
++ `po_mt_img`
++ `zero2nan`
 
 #### po_meantemp
 
