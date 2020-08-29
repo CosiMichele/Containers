@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Author : Emmanuel Gonzalez, Michele Cosi, Holly Ellingson, Jeffrey Demieville
+Note   : Parts of this code was initially developed by the AgPipeline and TERRA-REF teams.
 Date   : 2020-07-09
 Purpose: Convert FLIR .bin files to .tif (Season 10)
 """
@@ -57,7 +58,8 @@ def get_args():
 
 # --------------------------------------------------
 def flirRawToTemperature(rawData, meta):
-
+    
+    # Normalizing the tempearature measurements according to the Season 10 calibration
     R = 16923.6
     B = 1434.6
     F = 1
@@ -74,15 +76,14 @@ def flirRawToTemperature(rawData, meta):
     H2O_K2 = 0.0694
     H2O_K3 = -0.000278
     H2O_K4 = 0.000000685
-
+    
+    # Obtain shutter temperature from metadata
     K0 = 273.15
     H = 0.1
     T = int(float(meta['sensor_variable_metadata']['shutter_temperature_K']) - 273.15)
     # T = 22
     D = 2.5
     E = 0.98
-
-
 
     im = rawData
 
