@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Author : mcosi
+Author : Michele Cosi
 Date   : 2020-08-04
-Purpose: Rock the Casbah
+Purpose: Set all 0 values to NaN
 """
 
 import argparse
