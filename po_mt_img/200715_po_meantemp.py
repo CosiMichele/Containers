@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Author : Emmanuel Gonzalez, Michele Cosi
+Note   : Parts of this code was initially developed by the AgPipeline and TERRA-REF teams.
 Date   : 2020-06-21
 Purpose: Calculate mean temperature for plots
 References: TERRA-REF & AgPipeline
