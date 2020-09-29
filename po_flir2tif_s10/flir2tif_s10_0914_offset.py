@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Author : Emmanuel Gonzalez, Michele Cosi, Holly Ellingson, Jeffrey Demieville
-Note   : Parts of this code was initially developed by the AgPipeline and TERRA-REF teams.
 Date   : 2020-07-09
 Purpose: Convert FLIR .bin files to .tif (Season 10)
 """

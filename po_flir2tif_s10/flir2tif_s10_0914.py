@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Author : Emmanuel Gonzalez, Michele Cosi, Holly Ellingson, Jeffrey Demieville
-Note   : Parts of this code was initially developed by the AgPipeline and TERRA-REF teams.
 Date   : 2020-07-09
 Purpose: Convert FLIR .bin files to .tif (Season 10)
 """
@@ -35,7 +34,7 @@ def get_args():
 
     parser.add_argument('-m',
                         '--metadata',
-                        help='Raw metadata file',
+                        help='Cleaned metadata file',
                         metavar='metadata',
                         type=str,
                         required=True)
@@ -60,6 +59,7 @@ def get_args():
         args.outdir = args.outdir + '/'
 
     return args
+
 
 
 # --------------------------------------------------
@@ -95,14 +95,14 @@ def get_boundingbox(metadata, z_offset):
     bbox_se_latlon = scanalyzer_to_latlon(x_s, y_e)
 
     # TERRA-REF
-    lon_shift = 0.000020308287
+    #lon_shift = 0.000020308287
 
     # Drone
-    lat_shift = 0.000018292 #0.000015258894
-    b_box =  ( bbox_se_latlon[0] - lat_shift,
-                bbox_nw_latlon[0] - lat_shift,
-                bbox_nw_latlon[1] + lon_shift,
-                bbox_se_latlon[1] + lon_shift)
+    #lat_shift = 0.000018292 #0.000015258894
+    b_box =  ( bbox_se_latlon[0], #- lat_shift,
+                bbox_nw_latlon[0], #- lat_shift,
+                bbox_nw_latlon[1], #+ lon_shift,
+                bbox_se_latlon[1]) #+ lon_shift )
 
     return b_box, img_height, img_width
 
@@ -198,6 +198,7 @@ def main():
                     raw_data = np.rot90(raw_data, 3)
 
                     tc = flirRawToTemperature(raw_data, full_md)
+
                     create_geotiff(tc, gps_bounds_bin, out_file, None,
                                 True, extractor_info, None, compress=True)
 
