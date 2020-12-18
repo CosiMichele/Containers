@@ -103,7 +103,7 @@ def load_data():
 
     date = date_combo.get()
     
-    list_all = glob.glob(f'/home/mcosi/Lab_Code/jupyter_code/Env_data_parser/{date}/{date}*.json')
+    list_all = glob.glob(f'./{date}/{date}*.json')
 
     # Set up empty dictionary and dataframe
     d = {}
