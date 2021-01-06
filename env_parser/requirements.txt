@@ -1,5 +1,2 @@
-liblas
-geopandas
-opencv-python
-tifffile
-scipy
+matplotlib
+pandas
