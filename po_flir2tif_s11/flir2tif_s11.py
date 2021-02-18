@@ -44,7 +44,7 @@ def get_args():
                         help='Z-axis offset',
                         metavar='z-offset',
                         type=int,
-                        default=0.76)
+                        default=0.76)#0.76
 
     parser.add_argument('-o',
                         '--outdir',
@@ -72,7 +72,7 @@ def get_boundingbox(metadata, z_offset):
 
     gantry_x = float(meta['gantry_system_variable_metadata']['position x [m]']) + loc_gantry_x
     gantry_y = float(meta['gantry_system_variable_metadata']['position y [m]']) + loc_gantry_y
-    gantry_z = float(meta['gantry_system_variable_metadata']['position z [m]']) + z_offset + loc_gantry_z#offset in m
+    gantry_z = float(meta['gantry_system_variable_metadata']['position z [m]']) + loc_gantry_z + z_offset#offset in m
 
     fov_x, fov_y = float(meta['sensor_fixed_metadata']['field of view x [m]']), float(meta['sensor_fixed_metadata']['field of view y [m]'])
     
@@ -92,15 +92,10 @@ def get_boundingbox(metadata, z_offset):
     bbox_nw_latlon = scanalyzer_to_latlon(x_n, y_w)
     bbox_se_latlon = scanalyzer_to_latlon(x_s, y_e)
 
-    # TERRA-REF
-    lon_shift = 0.000020308287
-
-    # Drone
-    lat_shift = 0.000018292 #0.000015258894
-    b_box =  ( bbox_se_latlon[0] - lat_shift,
-                bbox_nw_latlon[0] - lat_shift,
-                bbox_nw_latlon[1] + lon_shift,
-                bbox_se_latlon[1] + lon_shift)
+    b_box =  ( bbox_se_latlon[0],
+                bbox_nw_latlon[0],
+                bbox_nw_latlon[1],
+                bbox_se_latlon[1])
 
     return b_box, img_height, img_width
 
