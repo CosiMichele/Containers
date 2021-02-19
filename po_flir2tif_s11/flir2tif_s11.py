@@ -92,10 +92,15 @@ def get_boundingbox(metadata, z_offset):
     bbox_nw_latlon = scanalyzer_to_latlon(x_n, y_w)
     bbox_se_latlon = scanalyzer_to_latlon(x_s, y_e)
 
-    b_box =  ( bbox_se_latlon[0],
-                bbox_nw_latlon[0],
-                bbox_nw_latlon[1],
-                bbox_se_latlon[1])
+    # TERRA-REF
+    lon_shift = 0.000020308287
+
+    # Drone
+    lat_shift = 0.000018292 #0.000015258894
+    b_box =  ( bbox_se_latlon[0] - lat_shift,
+                bbox_nw_latlon[0] - lat_shift,
+                bbox_nw_latlon[1] + lon_shift,
+                bbox_se_latlon[1] + lon_shift)
 
     return b_box, img_height, img_width
 
