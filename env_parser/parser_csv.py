@@ -27,7 +27,7 @@ root.geometry("850x280")
 
 ## Season picker
 season_combo= Combobox(root)
-season_combo['values']=('season_10_yr_2020', 'season_11_yr_2020')
+season_combo['values']=('season_10_lettuce_yr_2020', 'season_11_sorghum_yr_2020')
 season_combo.get()
 
 ## Date picker
@@ -94,7 +94,7 @@ def prep_data():
             T.delete('1.0', END)
             T.insert(END, f'tar does not exist, will download, uncompress and prep {date} data. Press prep data again to test if loaded.')
             print("tar does not exist, will download and uncompress.")
-            command = f'iget -rKTPf -N 0 /iplant/home/shared/terraref/ua-mac/level_1/{season}/EnvironmentLogger/{date}_clean.tar.gz'
+            command = f'iget -rKTPf -N 0 /iplant/home/shared/phytooracle/{season}/level_1/EnvironmentLogger/{date}_clean.tar.gz'
             subprocess.call(command, shell = True)
             command = f'tar -xvf {date}_clean.tar.gz'
             subprocess.call(command, shell = True)
